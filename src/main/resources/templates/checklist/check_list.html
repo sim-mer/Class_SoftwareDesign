@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="/css/structure.css"/>
+  <script >
+  function count(type)  {
+    const resultElement = document.getElementById('total');
+
+    let number = resultElement.innerText;
+
+    console.log(number)
+
+    if(type === 1) {
+      number = parseInt(number) + 1;
+    }else if(type === 2) {
+        number = parseInt(number) + 2;
+    }else if(type === 3) {
+        number = parseInt(number) + 3;
+    }else if(type === 4) {
+        number = parseInt(number) + 4;
+    }else if(type === 5) {
+        number = parseInt(number) + 5;
+    }
+    resultElement.innerText = number;
+  }
+  </script>
+</head>
+<body>
+  <div id="container">    
+    <header>
+      <div id="logo">
+        <a href="/">
+          <h1>HelpSystem</h1>
+        </a>
+      </div>
+      <nav>
+        <ul id="topMenu">
+          <li><a href="/checklist">체크 리스트</a></li>
+          <li><a href="/chat">채팅상담</a></li>
+          <li><a href="/schedules">예약 신청</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="contents">
+            <table style="margin-left:auto;margin-right:auto;" border="1" width="1000" height="500" align="center">
+                <tr align = "center" bgcolor="gray">
+                    <td>항목</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>항목1</td>
+                    <td><input type="radio" name="chk_info1" onclick='count(1)'/></td>
+                    <td><input type="radio" name="chk_info1" onclick="count(2)"/></td>
+                    <td><input type="radio" name="chk_info1" onclick="count(3)"/></td>
+                    <td><input type="radio" name="chk_info1" onclick="count(4)"/></td>
+                    <td><input type="radio" name="chk_info1" onclick="count(5)"/></td>
+                </tr>
+                <tr>
+                    <td>항목2</td>
+                    <td><input type="radio" name="chk_info2" onclick="count(1)"/></td>
+                    <td><input type="radio" name="chk_info2" onclick="count(2)"/></td>
+                    <td><input type="radio" name="chk_info2" onclick="count(3)"/></td>
+                    <td><input type="radio" name="chk_info2" onclick="count(4)"/></td>
+                    <td><input type="radio" name="chk_info2" onclick="count(5)"/></td>
+                </tr>
+                <tr>
+                    <td>항목3</td>
+                    <td><input type="radio" name="chk_info3" onclick="count(1)"/></td>
+                    <td><input type="radio" name="chk_info3" onclick="count(2)"/></td>
+                    <td><input type="radio" name="chk_info3" onclick="count(3)"/></td>
+                    <td><input type="radio" name="chk_info3" onclick="count(4)"/></td>
+                    <td><input type="radio" name="chk_info3" onclick="count(5)"/></td>
+                </tr>
+                <tr>
+                    <td>항목4</td>
+                    <td><input type="radio" name="chk_info4" onclick="count(1)"/></td>
+                    <td><input type="radio" name="chk_info4" onclick="count(2)"/></td>
+                    <td><input type="radio" name="chk_info4" onclick="count(3)"/></td>
+                    <td><input type="radio" name="chk_info4" onclick="count(4)"/></td>
+                    <td><input type="radio" name="chk_info4" onclick="count(5)"/></td>
+                </tr>
+                <tr>
+                    <td>항목5</td>
+                    <td><input type="radio" name="chk_info5" onclick="count(1)"/></td>
+                    <td><input type="radio" name="chk_info5" onclick="count(2)"/></td>
+                    <td><input type="radio" name="chk_info5" onclick="count(3)"/></td>
+                    <td><input type="radio" name="chk_info5" onclick="count(4)"/></td>
+                    <td><input type="radio" name="chk_info5" onclick="count(5)"/></td>
+                </tr>
+                <tr>
+                    <td align = "center" bgcolor="gray">total</td>
+                    <td><div id="total">0</div></td>
+                </tr>
+            </table>
+            <div style="text-align:center; width:100%">
+                <button type="button" onclick="location.href='/checklist'">Back</button>
+                <form action="/checklist/create" method="post">
+                    <input type="hidden" id="temp" name="temp">
+                    <button type="button" onclick="submitScore(this.form)">save</button>
+                </form>
+                <script>
+              function submitScore(f){
+                var totalvalue = document.getElementById('total');
+                var ChangeToString = totalvalue.innerHTML;
+                document.getElementById('temp').value = ChangeToString;
+                f.submit();
+              }
+            </script>
+            </div>
+    </main>
+    <footer>    
+      <section id="bottomMenu">
+        <ul>
+          <li><a href="#">회사 소개</a></li>z
+          <li><a href="#">개인정보처리방침</a></li>
+          <li><a href="#">약관</a></li>
+        </ul>
+      </section>   
+    </footer>  
+  </div>
+</body>
+
+</html>

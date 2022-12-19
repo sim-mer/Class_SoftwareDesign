@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="/css/structure.css">
+  <style>
+    .styled-table {
+      margin:0 auto;  /* 화면 중앙에 배치 */
+      width:1000px;    /* 너비 */
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 2px solid #009879;
+    }
+
+    .styled-table tbody tr.active-row {
+      font-weight: bold;
+      color: #009879;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <header>
+    <div id="logo">
+      <a href="/">
+        <h1>HelpSystem</h1>
+      </a>
+    </div>
+    <nav>
+      <ul id="topMenu">
+        <li><a href="/checklist">체크 리스트</a></li>
+        <li><a href="/chat">채팅상담</a></li>
+        <li><a href="/schedules">예약 신청</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="contents">
+    <h1 style="text-align:center; width:100%">조회된 스케줄 리스트</h1>
+    <hr>
+    <section id="headling">
+      <!-- <input type="hidden" id="schNum" name="schNUm" value=""> -->
+      <!-- https://inpa.tistory.com/entry/PHP-%F0%9F%93%9A-php-%E2%86%94-javascript-%EB%B3%80%EC%88%98-%EC%A0%84%EB%8B%AC#javascript_%E2%86%92_php_%EC%A0%84%EB%8B%AC -->
+      <table class="styled-table">
+        <thead>
+        <tr>
+          <th>스케줄번호&nbsp</th>
+          <th>전문가ID&nbsp</th>
+          <th>시간&nbsp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Schedule : ${schedules}">
+          <td th:text="${Schedule.schNum}"></td>
+          <td th:text="${Schedule.ExpertID}"></td>
+          <td th:text="${Schedule.time}"></td>
+          <td>
+            <form action="/appointment/new" method="get">
+              <input type="hidden" name="schNum" id="schNum" th:value=${Schedule.schNum}>
+              <button type="submit">선택</button>
+            </form>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </section>
+  </main>
+  <footer>
+    <section id="bottomMenu">
+      <ul>
+        <li><a href="#">회사 소개</a></li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li><a href="#">약관</a></li>
+      </ul>
+    </section>
+  </footer>
+</div>
+
+</body>
+</html>
