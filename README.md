@@ -1,4 +1,4 @@
-# Class_SoftwareDesign
+# Subject_SoftwareDesign
 2022년 2학기 소프트웨어설계 과목 팀 프로젝트
 
 #### 서비스 명 : 주택 임대차계약 도우미 서비스
